@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cutvsce15qbjo"]
+
+[ext_resource type="Shader" path="res://shaders/algorithmic_drawing.gdshader" id="1_b6p0v"]
+[ext_resource type="Texture2D" uid="uid://c1im4e6gfieh5" path="res://icon.svg" id="2_7mtey"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_of75w"]
+shader = ExtResource("1_b6p0v")
+
+[node name="algorithmic_drawing" type="Sprite2D"]
+material = SubResource("ShaderMaterial_of75w")
+texture = ExtResource("2_7mtey")
