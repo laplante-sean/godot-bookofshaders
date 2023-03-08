@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvi8teyhb0d0"]
+
+[ext_resource type="Texture2D" uid="uid://x7xq8nrvxv5v" path="res://textures/prototype_texture_floor.png" id="1_qmun3"]
+[ext_resource type="PackedScene" uid="uid://bfdx1j6xitlco" path="res://player/player.tscn" id="2_84iyb"]
+[ext_resource type="PackedScene" uid="uid://bfji8wtmk14l3" path="res://shaders/show_room.tscn" id="3_pnr6n"]
+[ext_resource type="PackedScene" uid="uid://mq5f7fnkj74d" path="res://shaders/shader_frame.tscn" id="3_t5fe4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4o1n0"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_wx6eu"]
+sky_material = SubResource("ProceduralSkyMaterial_4o1n0")
+
+[sub_resource type="Environment" id="Environment_r66e5"]
+background_mode = 2
+sky = SubResource("Sky_wx6eu")
+tonemap_mode = 2
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_clltw"]
+albedo_texture = ExtResource("1_qmun3")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5y850"]
+albedo_texture = ExtResource("1_qmun3")
+uv1_triplanar = true
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r66e5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.207912, -0.356903, 0.91071, 0, 0.931056, 0.364877, -0.978148, 0.0758622, -0.193577, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.4742)
+use_collision = true
+size = Vector3(50, 1, 13)
+material = SubResource("StandardMaterial3D_clltw")
+
+[node name="Subtract" type="CSGCombiner3D" parent="Floor"]
+operation = 2
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Floor/Subtract"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+size = Vector3(49.5, 1, 12.5)
+material = SubResource("StandardMaterial3D_5y850")
+
+[node name="Player" parent="." instance=ExtResource("2_84iyb")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -23.7357, 0, -13.0044)
+
+[node name="Rooms" type="Node3D" parent="."]
+
+[node name="01_GettingStarted" parent="Rooms" instance=ExtResource("3_pnr6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3876, 1.2974, -19.4372)
+
+[node name="HelloWorld" parent="Rooms/01_GettingStarted" instance=ExtResource("3_t5fe4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999071, 0.466467, -3.85985)
+shader_path = "res://shaders/01_getting_started/hello_world.gdshader"
+
+[node name="FragCoord" parent="Rooms/01_GettingStarted" instance=ExtResource("3_t5fe4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.998005, 0.466467, -3.85985)
+shader_path = "res://shaders/01_getting_started/frag_coord.gdshader"
+
+[node name="02_AlgorithmicDrawing" parent="Rooms" instance=ExtResource("3_pnr6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7991, 1.2974, -19.4372)
+
+[node name="AlgorithmicDrawing" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19178, 0, -3.82707)
+shader_path = "res://shaders/02_algorithmic_drawing/algorithmic_drawing.gdshader"
+
+[node name="AlgorithmicDrawing2" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.35995, 0, -2.2667)
+shader_path = "res://shaders/02_algorithmic_drawing/algorithmic_drawing2.gdshader"
+
+[node name="AlgorithmicDrawing3" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.28049, 0, 0.42457)
+shader_path = "res://shaders/02_algorithmic_drawing/algorithmic_drawing3.gdshader"
+
+[node name="AlgorithmicDrawing4" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.34604, 0, -1.97382)
+shader_path = "res://shaders/02_algorithmic_drawing/algorithmic_drawing4.gdshader"
+
+[node name="AlgorithmicDrawing5" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.34186, 0, 1.22579)
+shader_path = "res://shaders/02_algorithmic_drawing/algorithmic_drawing5.gdshader"
+
+[node name="Time" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00622, 0, -3.82707)
+shader_path = "res://shaders/02_algorithmic_drawing/time.gdshader"
+
+[node name="03_GenerativeDesigns" parent="Rooms" instance=ExtResource("3_pnr6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.69129, 1.2974, -19.4372)
+
+[node name="04_ImageProcessing" parent="Rooms" instance=ExtResource("3_pnr6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23071, 1.2974, -19.4372)
+
+[node name="05_Simulation" parent="Rooms" instance=ExtResource("3_pnr6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6126, 1.2974, -19.4372)
+
+[node name="06_3dGraphics" parent="Rooms" instance=ExtResource("3_pnr6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7405, 1.2974, -19.4372)

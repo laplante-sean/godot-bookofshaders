@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://mq5f7fnkj74d"]
+
+[ext_resource type="Script" path="res://shaders/shader_frame.gd" id="1_b3lm5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ptfd8"]
+noise_type = 0
+fractal_type = 3
+fractal_lacunarity = 3.0
+fractal_gain = 0.2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2o0tp"]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource("FastNoiseLite_ptfd8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws2gc"]
+shading_mode = 0
+albedo_color = Color(0.32549, 0.219608, 0.101961, 1)
+albedo_texture = SubResource("NoiseTexture2D_2o0tp")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_p6wb2"]
+lightmap_size_hint = Vector2i(6, 14)
+material = SubResource("StandardMaterial3D_ws2gc")
+size = Vector3(1.2, 1.2, 0.015)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_co246"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lcgqb"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(4, 4)
+material = SubResource("ShaderMaterial_co246")
+size = Vector2(1.125, 1.125)
+
+[node name="ShaderFrame" type="Node3D"]
+script = ExtResource("1_b3lm5")
+shader_path = ""
+
+[node name="Frame" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.015)
+mesh = SubResource("BoxMesh_p6wb2")
+
+[node name="ShaderMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_lcgqb")

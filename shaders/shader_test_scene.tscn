@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgxe42iqarbkk"]
+
+[ext_resource type="Shader" path="res://shaders/02_algorithmic_drawing/algorithmic_drawing5.gdshader" id="1_syyyf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s84qb"]
+render_priority = 0
+shader = ExtResource("1_syyyf")
+shader_parameter/power = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_rjxvd"]
+material = SubResource("ShaderMaterial_s84qb")
+
+[node name="ShaderTestScene" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.511909, 0.502094, 0)
+mesh = SubResource("QuadMesh_rjxvd")
