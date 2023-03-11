@@ -1,11 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgxe42iqarbkk"]
+[gd_scene load_steps=4 format=3 uid="uid://dg5mb11kmqu7f"]
 
-[ext_resource type="Shader" path="res://shaders/02_algorithmic_drawing/algorithmic_drawing5.gdshader" id="1_syyyf"]
+[ext_resource type="Shader" path="res://shaders/02_algorithmic_drawing/boxy_wave.gdshader" id="1_wcn7o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s84qb"]
 render_priority = 0
-shader = ExtResource("1_syyyf")
-shader_parameter/power = 5.0
+shader = ExtResource("1_wcn7o")
 
 [sub_resource type="QuadMesh" id="QuadMesh_rjxvd"]
 material = SubResource("ShaderMaterial_s84qb")

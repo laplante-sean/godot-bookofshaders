@@ -59,39 +59,43 @@ transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -23.7357, 
 [node name="01_GettingStarted" parent="Rooms" instance=ExtResource("3_pnr6n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3876, 1.2974, -19.4372)
 
-[node name="HelloWorld" parent="Rooms/01_GettingStarted" instance=ExtResource("3_t5fe4")]
+[node name="hello_world" parent="Rooms/01_GettingStarted" instance=ExtResource("3_t5fe4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999071, 0.466467, -3.85985)
 shader_path = "res://shaders/01_getting_started/hello_world.gdshader"
 
-[node name="FragCoord" parent="Rooms/01_GettingStarted" instance=ExtResource("3_t5fe4")]
+[node name="frag_coord" parent="Rooms/01_GettingStarted" instance=ExtResource("3_t5fe4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.998005, 0.466467, -3.85985)
 shader_path = "res://shaders/01_getting_started/frag_coord.gdshader"
 
 [node name="02_AlgorithmicDrawing" parent="Rooms" instance=ExtResource("3_pnr6n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7991, 1.2974, -19.4372)
 
-[node name="AlgorithmicDrawing" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+[node name="cosine_x" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19178, 0, -3.82707)
-shader_path = "res://shaders/02_algorithmic_drawing/algorithmic_drawing.gdshader"
+shader_path = "res://shaders/02_algorithmic_drawing/cosine_x.gdshader"
 
-[node name="AlgorithmicDrawing2" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+[node name="dip" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.35995, 0, -2.2667)
-shader_path = "res://shaders/02_algorithmic_drawing/algorithmic_drawing2.gdshader"
+shader_path = "res://shaders/02_algorithmic_drawing/dip.gdshader"
 
-[node name="AlgorithmicDrawing3" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+[node name="pow" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.28049, 0, 0.42457)
-shader_path = "res://shaders/02_algorithmic_drawing/algorithmic_drawing3.gdshader"
+shader_path = "res://shaders/02_algorithmic_drawing/pow.gdshader"
 
-[node name="AlgorithmicDrawing4" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+[node name="sine_2pi_x" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.34604, 0, -1.97382)
-shader_path = "res://shaders/02_algorithmic_drawing/algorithmic_drawing4.gdshader"
+shader_path = "res://shaders/02_algorithmic_drawing/sine_2pi_x.gdshader"
 
-[node name="AlgorithmicDrawing5" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+[node name="sine_x" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.34186, 0, 1.22579)
-shader_path = "res://shaders/02_algorithmic_drawing/algorithmic_drawing5.gdshader"
+shader_path = "res://shaders/02_algorithmic_drawing/sine_x.gdshader"
 
-[node name="Time" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+[node name="sine_x_pi" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00622, 0, -3.82707)
+shader_path = "res://shaders/02_algorithmic_drawing/sine_x_pi.gdshader"
+
+[node name="time" parent="Rooms/02_AlgorithmicDrawing" instance=ExtResource("3_t5fe4")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.54606, 0, 3.85384)
 shader_path = "res://shaders/02_algorithmic_drawing/time.gdshader"
 
 [node name="03_GenerativeDesigns" parent="Rooms" instance=ExtResource("3_pnr6n")]

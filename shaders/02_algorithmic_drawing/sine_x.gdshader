@@ -1,16 +1,26 @@
 shader_type spatial;
 
-uniform float power = 5.0;
 
 float plot(vec2 st, float pct) {
     return smoothstep(pct - 0.02, pct, st.y) -
            smoothstep(pct, pct + 0.02, st.y);
 }
 
+
 void fragment() {
     // Examples: change what's commented out to see the different values
     float y = 0.0;
-    y = smoothstep(0.2, 0.5, UV.x) - smoothstep(0.5, 0.8, UV.x);
+
+    // Add TIME so that we get some animation
+    float x = UV.x + TIME;
+    
+    // Sine wave options
+    y = sin(x);
+
+    // Move the sine wave into only positive values so it's not going off texture
+    // (0,0) is top-left in Godot, so multiply by 0.5 to cut the applitude in half
+    // making it produce values from -0.5 to 0.5, then add 0.5 to shift the whole
+    // wave down so the values are all 0 to 1.0.
     y = (y * 0.5) + 0.5;
 
     vec3 color = vec3(y);
